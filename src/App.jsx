@@ -276,6 +276,10 @@ export default function App() {
     }));
   }
 
+  function resetAllQuestions() {
+    setSession(createInitialSession());
+  }
+
   function startNextTest() {
     setSession((currentSession) => buildNextSession(currentSession));
   }
@@ -295,7 +299,12 @@ export default function App() {
     return (
       <main className="page-shell">
         <header className="page-header">
-          <p className="page-kicker">Linux</p>
+          <div className="header-topbar">
+            <p className="page-kicker">Linux</p>
+            <button type="button" className="top-reset-button" onClick={resetAllQuestions}>
+              Reset totale
+            </button>
+          </div>
           <h1>Resoconto finale</h1>
           <div className="status-row">
             <span className="status-item">Domande: {activeQuestions.length}</span>
@@ -353,7 +362,12 @@ export default function App() {
   return (
     <main className="page-shell">
       <header className="page-header">
-        <p className="page-kicker">Linux</p>
+        <div className="header-topbar">
+          <p className="page-kicker">Linux</p>
+          <button type="button" className="top-reset-button" onClick={resetAllQuestions}>
+            Reset totale
+          </button>
+        </div>
         <h1>Domanda {session.currentIndex + 1}</h1>
         <div className="status-row">
           <span className="status-item">
