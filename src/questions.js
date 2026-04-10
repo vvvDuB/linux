@@ -1273,5 +1273,530 @@ export const questions = [
     answer: 1,
     explanation:
       "Gli handler vengono attivati tramite `notify` e di norma partono solo se un task ha effettivamente cambiato qualcosa."
+  },
+  {
+    id: 86,
+    topic: "Linux Base",
+    source: "LinuxOs 19_12_25-4.pdf",
+    prompt: "Secondo gli appunti, cosa compone una distribuzione Linux in senso ampio?",
+    options: [
+      "Solo il kernel e un compilatore C",
+      "Kernel, GNU, installer e package manager",
+      "Solo BIOS, bootloader e shell",
+      "Kernel, Docker e Kubernetes"
+    ],
+    answer: 1,
+    explanation:
+      "Nel PDF la distribuzione viene descritta come l'unione di kernel, GNU, installer e package manager."
+  },
+  {
+    id: 87,
+    topic: "Linux Base",
+    source: "LinuxOs 19_12_25-4.pdf",
+    prompt: "Quanto dura il supporto di una release Ubuntu LTS secondo il documento?",
+    options: [
+      "9 mesi",
+      "2 anni",
+      "5 anni",
+      "10 anni"
+    ],
+    answer: 2,
+    explanation:
+      "Gli appunti indicano per le versioni LTS un supporto di 5 anni."
+  },
+  {
+    id: 88,
+    topic: "Storage",
+    source: "LinuxOs 19_12_25-4.pdf",
+    prompt: "Qual è il nome Linux corretto per la terza partizione del secondo disco NVMe?",
+    options: [
+      "nvme2p3",
+      "nvme1n1p3",
+      "nvme0n2p3",
+      "sdb3"
+    ],
+    answer: 1,
+    explanation:
+      "Nel PDF compare proprio l'esempio `nvme1n1p3` per terza partizione del secondo disco NVMe."
+  },
+  {
+    id: 89,
+    topic: "Storage",
+    source: "LinuxOs 19_12_25-4.pdf",
+    prompt: "Quale affermazione distingue correttamente tabella delle partizioni DOS e GPT negli appunti?",
+    options: [
+      "DOS supporta 128 partizioni, GPT si ferma a 4",
+      "GPT ha limite 2 TB, DOS no",
+      "DOS ha limite 2 TB, GPT arriva fino a 128 partizioni",
+      "Entrambe hanno gli stessi limiti principali"
+    ],
+    answer: 2,
+    explanation:
+      "Gli appunti riportano il limite di 2 TB per DOS e fino a 128 partizioni per GPT."
+  },
+  {
+    id: 90,
+    topic: "Filesystem",
+    source: "LinuxOs 19_12_25-4.pdf",
+    prompt: "Quale filesystem viene descritto come stabile e maturo, adatto per esempio a un server?",
+    options: [
+      "btrfs",
+      "reiserfs",
+      "ext4",
+      "swap"
+    ],
+    answer: 2,
+    explanation:
+      "Nel documento `ext4` viene indicato come filesystem stabile e maturo."
+  },
+  {
+    id: 91,
+    topic: "Filesystem",
+    source: "LinuxOs 19_12_25-4.pdf",
+    prompt: "Come può comparire il messaggio `No space left on device` anche se i file sono quasi vuoti?",
+    options: [
+      "Quando il kernel non riesce a caricare nuovi moduli",
+      "Quando si saturano gli inode disponibili",
+      "Quando manca il default gateway",
+      "Quando il file `/etc/fstab` è corrotto"
+    ],
+    answer: 1,
+    explanation:
+      "Gli appunti spiegano che si possono esaurire gli inode anche creando moltissimi file vuoti."
+  },
+  {
+    id: 92,
+    topic: "Filesystem",
+    source: "LinuxOs 19_12_25-4.pdf",
+    prompt: "Quale comando mostra il numero totale, usato e libero degli inode?",
+    options: [
+      "df -h",
+      "du -sh",
+      "df -i",
+      "ls -lh"
+    ],
+    answer: 2,
+    explanation:
+      "`df -i` è il comando indicato nel PDF per osservare lo stato degli inode."
+  },
+  {
+    id: 93,
+    topic: "FHS",
+    source: "LinuxOs 19_12_25-4.pdf",
+    prompt: "Quale percorso è descritto come pseudo-filesystem relativo ai processi, generato al volo dal kernel?",
+    options: [
+      "/sys",
+      "/boot",
+      "/proc",
+      "/srv"
+    ],
+    answer: 2,
+    explanation:
+      "Nel documento `/proc` viene definito pseudo-filesystem con dati relativi ai processi."
+  },
+  {
+    id: 94,
+    topic: "FHS",
+    source: "LinuxOs 19_12_25-4.pdf",
+    prompt: "Qual è la differenza principale riportata tra `/tmp` e `/var/tmp`?",
+    options: [
+      "`/tmp` è solo per root, `/var/tmp` è solo per utenti normali",
+      "`/tmp` viene svuotata all'avvio, `/var/tmp` no",
+      "`/var/tmp` sta in RAM, `/tmp` su disco",
+      "Non c'è alcuna differenza pratica"
+    ],
+    answer: 1,
+    explanation:
+      "Gli appunti indicano che `/tmp` viene ripulita all'avvio, mentre `/var/tmp` no."
+  },
+  {
+    id: 95,
+    topic: "ls e Link",
+    source: "LinuxOs 19_12_25-4.pdf",
+    prompt: "Nel formato `ls -l`, cosa rappresenta il numero di hardlink per una directory?",
+    options: [
+      "Il numero di byte occupati dalla directory",
+      "Il numero di processi che usano la directory",
+      "Due più il numero delle sottodirectory",
+      "Il numero di symlink che puntano alla directory"
+    ],
+    answer: 2,
+    explanation:
+      "Nel PDF viene spiegato che sottraendo 2 al numero di hardlink si ottiene il numero di sottocartelle."
+  },
+  {
+    id: 96,
+    topic: "ls e Link",
+    source: "LinuxOs 19_12_25-4.pdf",
+    prompt: "Quale affermazione è corretta sugli hardlink secondo il documento?",
+    options: [
+      "Possono essere creati normalmente anche per le directory dagli utenti",
+      "Si possono creare per file, ma non per directory",
+      "Hanno sempre un inode diverso dall'originale",
+      "Sono sinonimi di symlink"
+    ],
+    answer: 1,
+    explanation:
+      "Gli appunti distinguono hardlink e symlink e specificano che gli hardlink non si creano per directory lato utente."
+  },
+  {
+    id: 97,
+    topic: "Tipi di File",
+    source: "LinuxOs 19_12_25-4.pdf",
+    prompt: "Quale lettera identifica un socket nell'output di `ls -l`?",
+    options: [
+      "p",
+      "l",
+      "s",
+      "c"
+    ],
+    answer: 2,
+    explanation:
+      "Nel PDF `s` indica i socket, usati per comunicazione bidirezionale locale tra processi."
+  },
+  {
+    id: 98,
+    topic: "Permessi",
+    source: "LinuxOs 19_12_25-4.pdf",
+    prompt: "Da quali permessi dipende la possibilità di eliminare un file?",
+    options: [
+      "Dai permessi del file stesso",
+      "Dai permessi della directory che lo contiene",
+      "Solo dal numero di inode liberi",
+      "Solo dal gruppo primario del proprietario"
+    ],
+    answer: 1,
+    explanation:
+      "Gli appunti sottolineano che per eliminare un file contano i permessi della directory contenitore."
+  },
+  {
+    id: 99,
+    topic: "Permessi",
+    source: "LinuxOs 19_12_25-4.pdf",
+    prompt: "Quale effetto ha SGID applicato a una directory?",
+    options: [
+      "Rende tutti i file eseguibili",
+      "Fa ereditare il gruppo proprietario agli oggetti creati successivamente",
+      "Permette solo al root di cancellare i file",
+      "Cambia il proprietario utente dei nuovi file"
+    ],
+    answer: 1,
+    explanation:
+      "Nel documento SGID su directory viene associato all'ereditarietà del gruppo proprietario."
+  },
+  {
+    id: 100,
+    topic: "Redirezioni",
+    source: "LinuxOs 19_12_25-4.pdf",
+    prompt: "Quali sono i tre file descriptor standard di un processo?",
+    options: [
+      "0 input, 1 output, 2 error",
+      "1 input, 2 output, 3 error",
+      "stdin, stdout, stderr corrispondono a 1, 2, 4",
+      "0 log, 1 shell, 2 debug"
+    ],
+    answer: 0,
+    explanation:
+      "Il PDF elenca 0 standard input, 1 standard output e 2 standard error."
+  },
+  {
+    id: 101,
+    topic: "Redirezioni",
+    source: "LinuxOs 19_12_25-4.pdf",
+    prompt: "Qual è la forma corretta per mandare sia output standard sia errori nello stesso file senza corromperlo?",
+    options: [
+      "comando 2> output.txt > output.txt",
+      "comando > output.txt 2>&1",
+      "comando < output.txt 2>&1",
+      "comando >> 2>&1 output.txt"
+    ],
+    answer: 1,
+    explanation:
+      "Negli appunti compare esplicitamente la forma `> output.txt 2>&1`."
+  },
+  {
+    id: 102,
+    topic: "Shell",
+    source: "LinuxOs 19_12_25-4.pdf",
+    prompt: "Cosa contiene la variabile speciale `$?` in Bash?",
+    options: [
+      "Il numero di parametri passati allo script",
+      "Il PID del processo corrente",
+      "Il valore di uscita dell'ultimo comando eseguito",
+      "Il percorso della shell attiva"
+    ],
+    answer: 2,
+    explanation:
+      "Il PDF definisce `$?` come il valore di uscita dell'ultimo comando inserito."
+  },
+  {
+    id: 103,
+    topic: "Shell",
+    source: "LinuxOs 19_12_25-4.pdf",
+    prompt: "Qual è il modo corretto per riferirsi al decimo parametro posizionale in uno script Bash?",
+    options: [
+      "$10",
+      "$#10",
+      "${10}",
+      "$@10"
+    ],
+    answer: 2,
+    explanation:
+      "Gli appunti mostrano che `$10` non fa quello che ci si aspetta, mentre `${10}` sì."
+  },
+  {
+    id: 104,
+    topic: "Shell",
+    source: "LinuxOs 19_12_25-4.pdf",
+    prompt: "A cosa serve `$@` in uno script Bash?",
+    options: [
+      "A ottenere il numero di parametri",
+      "A ottenere tutti i parametri passati allo script",
+      "A ottenere il nome dello script",
+      "A ottenere il codice di uscita"
+    ],
+    answer: 1,
+    explanation:
+      "Nel documento `$@` viene indicato come modo per richiamare tutti i parametri insieme."
+  },
+  {
+    id: 105,
+    topic: "Shell",
+    source: "LinuxOs 19_12_25-4.pdf",
+    prompt: "Che effetto ha il separatore `;` tra due comandi Bash?",
+    options: [
+      "Esegue il secondo comando solo se il primo ha successo",
+      "Esegue sempre il secondo comando, indipendentemente dall'esito del primo",
+      "Manda entrambi i comandi in background",
+      "Redirige l'output del primo nel secondo"
+    ],
+    answer: 1,
+    explanation:
+      "Gli appunti spiegano che `;` fa eseguire i comandi a prescindere, come un reset della logica condizionale."
+  },
+  {
+    id: 106,
+    topic: "Processi",
+    source: "LinuxOs 19_12_25-4.pdf",
+    prompt: "Nella colonna `STAT` di `ps aux`, cosa indica `z`?",
+    options: [
+      "Processo in attesa di I/O disco",
+      "Processo zombie",
+      "Processo compresso in swap",
+      "Processo in modalità kernel"
+    ],
+    answer: 1,
+    explanation:
+      "Il PDF associa `z` ai processi zombie."
+  },
+  {
+    id: 107,
+    topic: "Processi",
+    source: "LinuxOs 19_12_25-4.pdf",
+    prompt: "Come va interpretato il load average rispetto ai core della macchina?",
+    options: [
+      "Non ha alcuna relazione con il numero di core",
+      "Con un solo core, un load average pari a 1 indica pieno carico",
+      "Un valore alto indica sempre solo traffico di rete",
+      "Si confronta solo con la dimensione dello swap"
+    ],
+    answer: 1,
+    explanation:
+      "Negli appunti viene fatto proprio l'esempio di una macchina a 1 core con load average 1 come pieno carico."
+  },
+  {
+    id: 108,
+    topic: "Utenti e Gruppi",
+    source: "LinuxOs 19_12_25-4.pdf",
+    prompt: "Quale informazione contiene il settimo campo di `/etc/passwd`?",
+    options: [
+      "La data di scadenza della password",
+      "La shell o terminale predefinito dell'utente",
+      "L'hash della password",
+      "Il gruppo secondario dell'utente"
+    ],
+    answer: 1,
+    explanation:
+      "Gli appunti indicano nel settimo campo la shell associata all'utente, per esempio `/bin/bash`."
+  },
+  {
+    id: 109,
+    topic: "Utenti e Gruppi",
+    source: "LinuxOs 19_12_25-4.pdf",
+    prompt: "Che differenza viene evidenziata tra `adduser` e `useradd`?",
+    options: [
+      "`adduser` è interattivo, `useradd` no",
+      "`useradd` crea sempre automaticamente la home, `adduser` no",
+      "`adduser` può essere usato solo da root locale, `useradd` via SSH",
+      "Sono presentati come completamente equivalenti"
+    ],
+    answer: 0,
+    explanation:
+      "Nel PDF `adduser` è descritto come interattivo, mentre `useradd` è più grezzo e non interattivo."
+  },
+  {
+    id: 110,
+    topic: "Boot e Systemd",
+    source: "LinuxOs 19_12_25-4.pdf",
+    prompt: "Qual è l'ordine corretto delle 4 fasi di avvio del sistema riportato nel documento?",
+    options: [
+      "GRUB -> UEFI -> kernel -> systemd",
+      "UEFI -> bootloader/GRUB -> kernel Linux -> init/systemd",
+      "kernel -> UEFI -> systemd -> GRUB",
+      "systemd -> kernel -> UEFI -> GRUB"
+    ],
+    answer: 1,
+    explanation:
+      "Gli appunti elencano esplicitamente l'ordine UEFI, GRUB, kernel, init/systemd."
+  },
+  {
+    id: 111,
+    topic: "Boot e Systemd",
+    source: "LinuxOs 19_12_25-4.pdf",
+    prompt: "A cosa serve aggiungere `init=/bin/bash` alla riga del kernel in GRUB durante un takeover locale?",
+    options: [
+      "A far partire direttamente Bash al posto di init",
+      "A disabilitare il filesystem root",
+      "A forzare l'avvio in rete PXE",
+      "A ricompilare il kernel al boot"
+    ],
+    answer: 0,
+    explanation:
+      "Il documento descrive questa tecnica per ottenere una shell root al boot se UEFI/GRUB non sono protetti."
+  },
+  {
+    id: 112,
+    topic: "Systemd",
+    source: "LinuxOs 19_12_25-4.pdf",
+    prompt: "Dopo aver modificato o creato un'unità systemd, quale comando bisogna eseguire per ricaricare la configurazione?",
+    options: [
+      "systemctl restart all",
+      "systemctl daemon-reload",
+      "systemctl rehash",
+      "initctl reload"
+    ],
+    answer: 1,
+    explanation:
+      "Negli appunti `systemctl daemon-reload` è il passo obbligatorio dopo modifiche alle unità."
+  },
+  {
+    id: 113,
+    topic: "Pacchetti",
+    source: "LinuxOs 19_12_25-4.pdf",
+    prompt: "Qual è la differenza tra `dpkg -r` e `dpkg -P`?",
+    options: [
+      "`-r` installa, `-P` aggiorna",
+      "`-r` lascia la configurazione, `-P` la rimuove",
+      "`-r` funziona solo online, `-P` solo offline",
+      "Non c'è differenza sostanziale"
+    ],
+    answer: 1,
+    explanation:
+      "Il PDF distingue chiaramente rimozione semplice e rimozione con purge della configurazione."
+  },
+  {
+    id: 114,
+    topic: "Pacchetti",
+    source: "LinuxOs 19_12_25-4.pdf",
+    prompt: "Nell'output di `dpkg -l`, cosa indica lo stato `ii`?",
+    options: [
+      "Pacchetto installato",
+      "Pacchetto in cache ma non installato",
+      "Pacchetto bloccato",
+      "Pacchetto solo configurato"
+    ],
+    answer: 0,
+    explanation:
+      "Nel documento `ii` è associato al pacchetto installato."
+  },
+  {
+    id: 115,
+    topic: "APT",
+    source: "LinuxOs 19_12_25-4.pdf",
+    prompt: "A cosa serve `apt-cache policy` secondo gli appunti?",
+    options: [
+      "A eliminare i repository non firmati",
+      "A mostrare la versione candidata all'installazione",
+      "A ripulire la cache locale",
+      "A bloccare l'aggiornamento di un pacchetto"
+    ],
+    answer: 1,
+    explanation:
+      "Nel PDF `apt-cache policy` è citato per visualizzare la versione candidata."
+  },
+  {
+    id: 116,
+    topic: "APT",
+    source: "LinuxOs 19_12_25-4.pdf",
+    prompt: "Quale comando mette un pacchetto in stato di blocco per impedirne l'aggiornamento?",
+    options: [
+      "apt-cache hold",
+      "apt-mark hold",
+      "dpkg -P",
+      "apt purge --lock"
+    ],
+    answer: 1,
+    explanation:
+      "Gli appunti indicano `apt-mark hold` per mettere la sicura a un pacchetto."
+  },
+  {
+    id: 117,
+    topic: "Archivi",
+    source: "LinuxOs 19_12_25-4.pdf",
+    prompt: "Nel comando `tar xzvf netcat-0.7.1.tar.gz`, cosa significa l'opzione `z`?",
+    options: [
+      "Mostra l'output in formato compresso",
+      "Usa la zona oraria UTC",
+      "Decomprime il formato gzip",
+      "Crea un archivio zero-copy"
+    ],
+    answer: 2,
+    explanation:
+      "Nel PDF `z` è associata alla decompressione del formato `.gz`."
+  },
+  {
+    id: 118,
+    topic: "Archivi",
+    source: "LinuxOs 19_12_25-4.pdf",
+    prompt: "Quale affermazione sul formato `tar.gz` è coerente con il documento?",
+    options: [
+      "`tar` comprime direttamente i dati, `gz` aggiunge la struttura del filesystem",
+      "`tar` impacchetta, `gz` comprime",
+      "`tar.gz` è solo un'estensione estetica senza doppio formato",
+      "`gz` può nativamente archiviare intere directory preservandone la struttura"
+    ],
+    answer: 1,
+    explanation:
+      "Gli appunti distinguono il ruolo di `tar` come impacchettatore e `gz` come compressore."
+  },
+  {
+    id: 119,
+    topic: "Netcat e Rete",
+    source: "LinuxOs 19_12_25-4.pdf",
+    prompt: "Cosa cambia usando `netcat -s 127.0.0.1 -l -p 9999` invece di `netcat -l -p 9999`?",
+    options: [
+      "Il servizio ascolta solo sulla loopback locale",
+      "Il servizio ascolta su tutte le interfacce disponibili",
+      "Netcat entra in modalità UDP",
+      "La porta diventa accessibile solo a root"
+    ],
+    answer: 0,
+    explanation:
+      "Nel documento la bind su `127.0.0.1` viene usata per limitare l'esposizione al solo localhost."
+  },
+  {
+    id: 120,
+    topic: "Netcat e Rete",
+    source: "LinuxOs 19_12_25-4.pdf",
+    prompt: "Che significato ha `0.0.0.0` negli appunti di rete?",
+    options: [
+      "Un IP riservato esclusivamente al default gateway",
+      "Un indirizzo che corrisponde a qualsiasi IP disponibile sulla macchina",
+      "L'indirizzo di broadcast universale",
+      "Un alias di `127.0.0.1`"
+    ],
+    answer: 1,
+    explanation:
+      "Il PDF definisce `0.0.0.0` come l'indirizzo che corrisponde a tutte le interfacce disponibili."
   }
 ];
