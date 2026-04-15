@@ -208,7 +208,10 @@ export default function App() {
   const canCompleteQuiz = answeredCount === activeQuestions.length;
   const totalScoreValue = correctCount * CORRECT_POINTS + wrongCount * WRONG_POINTS;
   const maxScoreValue = activeQuestions.length * CORRECT_POINTS;
-  const remainingPoolCount = session.remainingIds.length;
+  const finalGrade = Math.max(
+    0,
+    Math.round((Math.max(totalScoreValue, 0) / maxScoreValue) * 30)
+  );
 
   const reviewItems = activeQuestions.map((question, index) => {
     const answerIndex = session.answers[question.id];
@@ -306,6 +309,10 @@ export default function App() {
             </button>
           </div>
           <h1>Resoconto finale</h1>
+          <div className="grade-banner" aria-label="Voto finale in trentesimi">
+            <span className="grade-label">Voto</span>
+            <strong>{finalGrade}/30</strong>
+          </div>
           <div className="status-row">
             <span className="status-item">Domande: {activeQuestions.length}</span>
             <span className="status-item">Corrette: {correctCount}</span>
@@ -376,7 +383,6 @@ export default function App() {
           <span className="status-item">
             Progresso {answeredCount} / {activeQuestions.length}
           </span>
-          <span className="status-item">Pool residua: {remainingPoolCount}</span>
           <span className="status-item">Regola: +3 corretta / -1 sbagliata</span>
           <button
             type="button"
